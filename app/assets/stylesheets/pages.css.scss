@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+.newTweet {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: gray;
+  padding: 4px;
+}
+
+
+
+
 // overwrite iphone
 
 .iphone_icons_containter {
