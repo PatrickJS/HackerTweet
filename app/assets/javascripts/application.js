@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require data_generator
 //= require turbolinks
 //= require bootstrap
+//= require iphone
 //= require_tree .
