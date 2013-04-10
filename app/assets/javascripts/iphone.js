@@ -432,6 +432,9 @@ iphone = {
     var year_month = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
     var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
+    if (hours > 12) {
+      hours = hours - 10
+    }
     $('#iphone_lock_time').html(hours + '<span>:</span>' + minutes);
     $('#iphone_headline_clock').html(hours + ':' + minutes);
     $('#iphone_lock_date').html(week_days[date.getDay()] + ', ' + year_month[date.getMonth()] + ' ' + date.getDate());
