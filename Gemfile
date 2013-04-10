@@ -11,6 +11,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass-rails'
 gem 'simple_form'
 gem 'haml-rails'
+gem 'pusher'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"

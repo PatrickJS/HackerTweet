@@ -36,4 +36,7 @@ HackerTweet::Application.configure do
       domain: "hackertweet.herokuapp.com"
   }
 
+  Pusher.app_id = '41433'
+  Pusher.key    = 'e21578f97f967094a8c6'
+  Pusher.secret = '8c28262a290c8ade37e3'
 end
