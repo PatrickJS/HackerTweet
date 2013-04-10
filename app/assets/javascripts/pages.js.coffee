@@ -1,5 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-jQuery ->
-  return unless $('body.pages.index').length
+# jQuery ->
+#   return unless $('body.pages.index').length
+    $("#randomTweet").on "click", ->
+      randomTweet()
+    $("#postTweet").on "click", ->
+      postTweet()
+    $("#liveTweet").on "click", ->
+      liveTweet()
+      $(this).button "toggle"
+
+

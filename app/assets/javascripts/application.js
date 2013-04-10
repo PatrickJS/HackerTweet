@@ -17,4 +17,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require iphone
+//= require my_functions
 //= require_tree .
