@@ -27,4 +27,13 @@ HackerTweet::Application.configure do
 
   # Live Reload in middleware
   config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
+
+  # Email MailGun
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+  ActionMailer::Base.smtp_settings = {
+      address: "localhost",
+      port: 1025,
+      domain: "hackertweet.herokuapp.com"
+  }
+
 end
