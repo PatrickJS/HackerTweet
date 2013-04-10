@@ -3,3 +3,41 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 @import "bootstrap-responsive";
+// overwrite iphone
+
+.iphone_icons_containter {
+  top: 34px;
+  width: 320px;
+  position: relative;
+  display: block;
+  position: absolute;
+  left: 0;
+}
+
+.icon {
+  width: 256px;
+  height: 256px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-box-shadow: rgba(0,0,0,0.0) 0 1px 2px;
+     -moz-box-shadow: rgba(0,0,0,0.0) 0 1px 2px;
+          box-shadow: rgba(0,0,0,0.0) 0 1px 2px;
+  float: left;
+  margin-bottom: 30px;
+  z-index: 10;
+  position: absolute;
+}
+
+.iphone_icons_containter span {
+  display: block;
+  text-align: left;
+  font: 11px/15px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  color: #fff;
+  text-shadow: rgba(0,0,0,0.3) 1px 2px 1px;
+  text-transform: none;
+  position: absolute;
+  top: 95px;
+  left: 110px;
+  width: 300px;
+}
