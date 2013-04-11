@@ -38,7 +38,7 @@ var stopLive = function() {
 
 var postTweet = function() {
   var hasMessage = $('#new_message').val()
-  var tweetUser = $('#tweetUser').val()
+  var tweetUser = $('#tweetUser').val() || "me"
   if (hasMessage) {
     var $tweet = $('<div class="newTweet"></div>');
     var tweetMessage = $('#new_message').val();
