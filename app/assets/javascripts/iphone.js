@@ -433,7 +433,7 @@ iphone = {
     var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
     var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
     if (hours > 12) {
-      hours = hours - 10
+      hours = hours - 12
     }
     $('#iphone_lock_time').html(hours + '<span>:</span>' + minutes);
     $('#iphone_headline_clock').html(hours + ':' + minutes);
