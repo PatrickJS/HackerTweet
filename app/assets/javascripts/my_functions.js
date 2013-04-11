@@ -26,12 +26,14 @@ var liveTweet = function(startTime) {
 };
 
 var stopLive = function() {
-  for (var i = 0; i < refreshIntervalID.length; i++) {
-    console.log("Stop liveTweet ID:" + refreshIntervalID[i]);
-    clearInterval(refreshIntervalID[i])
-  };
-  refreshIntervalID = []
-  console.log("Live Tweets: on/[off]");
+  if (refreshIntervalID.length) {
+    for (var i = 0; i < refreshIntervalID.length; i++) {
+      console.log("Stop liveTweet ID:" + refreshIntervalID[i]);
+      clearInterval(refreshIntervalID[i])
+    };
+    refreshIntervalID = []
+    console.log("Live Tweets: on/[off]");
+  }
 }
 
 var postTweet = function() {
