@@ -1,4 +1,7 @@
 var refreshIntervalID = []
+var humanTime = function(time) {
+  return $.timeago(time);
+};
 
 var randomTweet = function() {
   var $tweet = $('<div class="newTweet"></div>');
@@ -7,6 +10,9 @@ var randomTweet = function() {
   var twitterTime = tweet.created_at
   $tweet.text('@' + twitterUser + ': ' + tweet.message);
   $tweet.prependTo($('#twitter'));
+      twitterTime = tweet.created_at,
+      tweetTime = $('<br /><small><time class="timeago" title="'+ twitterTime + '"> ' + humanTime(twitterTime) + '</time></small>');
+  $tweet.prependTo($('#twitter')).append(tweetTime).prepend(tweetUser);
 };
 
 var liveTweet = function(startTime) {
@@ -45,5 +51,7 @@ var postTweet = function() {
     $tweet.text('@' + tweetUser + ': ' + tweetMessage);
     $tweet.prependTo($('#twitter'));
     $('#new_message').val(null)
+        twitterTime = new Date(),
+        tweetTime = $('<br /><small><time class="timeago" title="'+ twitterTime + '"> '+ $.timeago(twitterTime) +'</time></small>'),
   }
 };
