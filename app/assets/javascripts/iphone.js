@@ -234,7 +234,7 @@ iphone = {
 
 
   turnOff : function(){
-
+    $('#twitter').hide();
     iphone.soundLock();
 
     iphone.status = 'off';
@@ -280,7 +280,7 @@ iphone = {
 
 
   unlock : function(){
-
+    $('#twitter').show();
     iphone.soundUnlock();
 
     iphone.status = 'unlock';
