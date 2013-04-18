@@ -20,7 +20,8 @@ group :test, :development do
   gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-bundler'
-  gem 'guard-webrick'
+  # gem 'guard-webrick'
+  gem 'guard-zeus'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'rb-fsevent',       require: false
