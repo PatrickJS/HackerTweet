@@ -10,6 +10,8 @@ MRI 2.0.0
 * System dependencies
 
 * Configuration
+Zeus
+Guard
 
 * Database creation
 
