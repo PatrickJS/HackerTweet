@@ -2,21 +2,24 @@
 <div class="row-fluid">
   <div class="span6">
 
-  <div class="well">
-    <div class="input-prepend">
-      <span class="add-on">@</span>
-      <input class="span8" id="tweetUser" type="text" placeholder="Username">
+    <div class="well">
+      <div class="input-prepend">
+        <span class="add-on">@</span>
+        <input class="span8" id="tweetUser" type="text" placeholder="Username">
+      </div>
+      <br>
+      <textarea class="span12" id="new_message" name="new_message" placeholder="Type in your message" rows="5"></textarea>
+      <!-- <h6 class="pull-right">320 characters remaining</h6> -->
+      <br>
+      <button id="postTweet" class="btn btn-info">Post New Message</button>
     </div>
-    <br>
-    <textarea class="span12" id="new_message" name="new_message" placeholder="Type in your message" rows="5"></textarea>
-    <!-- <h6 class="pull-right">320 characters remaining</h6> -->
-    <br>
-    <button id="postTweet" class="btn btn-info">Post New Message</button>
-  </div>
 
     <div class="well center">
       <button id="randomTweet" class="btn">Random Tweet</button>
       <button id="liveTweet" class="btn" >Live Tweets</button>
+    </div>
+
+    <div id="twitterTweet">
     </div>
 
   </div>
