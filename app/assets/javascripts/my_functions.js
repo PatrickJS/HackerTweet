@@ -1,4 +1,5 @@
 var $tweetStream = $('#twitter,#twitterTweet'),
+    visitor = "me",
     index = 0, // streams.home[index];
     liveTweetID = [];
 
@@ -58,16 +59,16 @@ var stopLiveTweets = function() {
 
 // Dylan's timeline
 // so .timelineLink is the class of <a>
-//             $(".timelineLink").on('click', function(e){
-//           e.preventDefault();
-//           // .attr('data-user'); == .data('user')
-//           var user = $(this).data('user');
-//           $('#bodyOfTweets').empty();
-//           for(var key in streams.users){
-//             if(key === user){
-//               $.each(streams.users[key], function(key, value){
-//                 $('#bodyOfTweets').append('<div class="actualTweets">' + timePosted + '<a class="timelineLink" data-user="' + value.user + '">@' + value.user + '</a>: ' + value.message + '</div>');
-//               });
-//             }
-//           }
-//       });
+      //       $(".timelineLink").on('click', function(e){
+      //     e.preventDefault();
+      //     // .attr('data-user'); == .data('user')
+      //     var user = $(this).data('user');
+      //     $('#bodyOfTweets').empty();
+      //     for(var key in streams.users){
+      //       if(key === user){
+      //         $.each(streams.users[key], function(key, value){
+      //           $('#bodyOfTweets').append('<div class="actualTweets">' + timePosted + '<a class="timelineLink" data-user="' + value.user + '">@' + value.user + '</a>: ' + value.message + '</div>');
+      //         });
+      //       }
+      //     }
+      // });

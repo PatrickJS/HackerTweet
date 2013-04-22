@@ -2,7 +2,11 @@
 #   if $('body.pages.index').length
 jQuery ($) ->
     # $('time.timeago').timeago()
-    $tweetStream.on('click','a', clickNames);
+    $tweetStream.on 'click','a', clickNames
+    $('#tweetUser').on 'blur', ->
+      tweetUser = $(this).val()
+      console.log tweetUser
+      # streams.users.[value]
     $('#postTweet').on 'click', ->
       postTweet()
     $('#randomTweet').on 'click', ->
@@ -12,7 +16,7 @@ jQuery ($) ->
       createTweet.prependTo($tweetStream).slideDown('fast')
       index++
     $('#liveTweet').on 'click', ->
-      if $(this).hasClass('btn-info')
+      if $(this).hasClass 'btn-info'
         stopLiveTweets()
         $(this).button('toggle').removeClass('btn-info')
       else

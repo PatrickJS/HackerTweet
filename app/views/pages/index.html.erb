@@ -5,11 +5,11 @@
     <div class="well">
       <div class="input-prepend">
         <span class="add-on">@</span>
-        <input class="span8" id="tweetUser" type="text" placeholder="Username">
+        <input class="span8" id="tweetUser" type="text" placeholder="Username" autofocus>
       </div>
       <br>
-      <textarea class="span12" id="new_message" name="new_message" placeholder="Type in your message" rows="5"></textarea>
-      <!-- <h6 class="pull-right">320 characters remaining</h6> -->
+      <textarea class="span12" id="new_message" name="new_message" style="resize:none" placeholder="Type in your message" rows="5"></textarea>
+      <h6 id="#characters" class="pull-right">320 characters remaining</h6>
       <br>
       <button id="postTweet" class="btn btn-info">Post New Message</button>
     </div>
