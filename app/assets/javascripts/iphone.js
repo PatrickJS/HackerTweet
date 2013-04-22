@@ -44,7 +44,7 @@ iphone = {
 
     iphone.soundFix();
 
-    $('#iphone_home_button').click(function(){
+    $('#iphone_home_button').on('click', function(){
       if(iphone.status == 'off'){
         iphone.turnOn();
       }
@@ -56,7 +56,7 @@ iphone = {
 
     iphone.prepareIcons();
 
-    $('#iphone_power_button').click(function(){
+    $('#iphone_power_button').on('click', function(){
       switch(iphone.status){
         case 'off':
           iphone.turnOn();
@@ -89,7 +89,7 @@ iphone = {
     }
 
 /*
-    $('.icon').children('div').click(function(){
+    $('.icon').children('div').on('click', function(){
       iphone.alert();
     });
 */
@@ -140,7 +140,7 @@ iphone = {
           $(self).css(properties);
 
         });
-      })
+      });
       $(document).mouseup(function(){
         if(iphone.slide_started) {
           $(document).unbind('mousemove');
@@ -432,8 +432,8 @@ iphone = {
     var year_month = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
     var hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
-    if (hours > 12) {
-      hours = hours - 12
+    if (hours > 13) {
+      hours = hours - 12;
     }
     $('#iphone_lock_time').html(hours + '<span>:</span>' + minutes);
     $('#iphone_headline_clock').html(hours + ':' + minutes);
@@ -447,15 +447,13 @@ iphone = {
 
 
   stopTextAnimate : function(){
-    if (iphone.is_mobile()) { return }
-
+    if (iphone.is_mobile()) { return; }
     clearInterval(letters_interval);
   },
 
 
   startTextAnimate : function(){
-    if (iphone.is_mobile()) { return }
-
+    if (iphone.is_mobile()) { return; }
     iphone.animateLetters();
   },
 
@@ -469,7 +467,7 @@ iphone = {
     $('#iphone_slide2unlock').html(end_text);
 
     var spans = $('#iphone_slide2unlock').children('span');
-    for (var i = 0; i < spans.length; i++){
+    for (var i = 0; i < spans.length; i++) {
       $(spans[ i ]).attr('id', 'spans_'+i);
     }
   },
@@ -491,7 +489,9 @@ iphone = {
       (function(i) {
         setTimeout(function(){
           $('#spans_'+i).stop().animate({'opacity':'1'}, iphone.letter_animate_time, function(){
-            setTimeout(function(){ $('#spans_' + i).stop().animate({'opacity':'0.3'}, iphone.letter_animate_time) }, iphone.letter_animate_time*4);
+            setTimeout(function() {
+              $('#spans_' + i).stop().animate({'opacity':'0.3'}, iphone.letter_animate_time);
+            }, iphone.letter_animate_time*4);
           });
         }, (i * iphone.letter_animate_time*1.2));
       })(i);
