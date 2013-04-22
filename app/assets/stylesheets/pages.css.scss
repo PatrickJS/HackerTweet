@@ -6,14 +6,23 @@
 
 #twitter {
   display: none;
+  & .newTweet {
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: gray;
+    padding: 4px;
+  }
+  & a {
+    text-decoration-color: none;
+    color: whitespace !important;
+  }
 }
-.newTweet {
-  border-radius: 5px;
-  margin-bottom: 5px;
-  background-color: gray;
-  padding: 4px;
+#twitterTweet .newTweet {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: whitesmoke;
+  padding: 8px;
 }
-
 
 footer {
   margin-top: 50px;
