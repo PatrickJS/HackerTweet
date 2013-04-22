@@ -1,24 +1,23 @@
 # jQuery ->
 #   if $('body.pages.index').length
 jQuery ($) ->
-    $('time.timeago').timeago()
-
+    # $('time.timeago').timeago()
+    $tweetStream.on('click','a', clickNames);
     $('#postTweet').on 'click', ->
       postTweet()
     $('#randomTweet').on 'click', ->
-      randomTweet()
+      generateRandomTweet()
+      tweet = streams.home[index]
+      createTweet = htmlTweet(tweet).hide()
+      createTweet.prependTo($tweetStream).slideDown('fast')
+      index++
     $('#liveTweet').on 'click', ->
       if $(this).hasClass('btn-info')
-        stopLive()
+        stopLiveTweets()
         $(this).button('toggle').removeClass('btn-info')
       else
-        liveTweet()
+        liveTweets()
         $(this).button('toggle').addClass('btn-info')
-    $('#twitterTweet').on 'click', (e) ->
-      e.preventDefault()
-      e.stopPropagation()
-
-
     # $('#languages .btn').on 'click', (e) ->
     #   console.log 'click', this, arguments
     #   element = $(e.currentTarget)

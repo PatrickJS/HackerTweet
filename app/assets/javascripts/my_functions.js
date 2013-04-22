@@ -1,62 +1,59 @@
-var refreshIntervalID = [];
+var $tweetStream = $('#twitter,#twitterTweet'),
+    index = 0, // streams.home[index];
+    liveTweetID = [];
 
 var humanTime = function(time) {
   return $.timeago(time);
 };
-
-var randomTweet = function() {
-  var tweet = streams.home[(streams.home.length - 1)],
-      twitterUser = tweet.user,
-      twitterTime = tweet.created_at,
-      $tweet = $('<div class="newTweet ' + twitterUser + '"></div>'),
-      tweetUser = $('<b>@' + twitterUser + '</b>: <br />'),
-      tweetTime = $('<br /><small><time class="timeago" title="'+ twitterTime + '"> ' + humanTime(twitterTime) + '</time></small>');
-  $tweet.text(tweet.message);
-  $tweet.prependTo($('#twitter')).append(tweetTime).prepend(tweetUser);
+var clickNames = function(e) {
+  e.preventDefault();
+  var getData = $(this).data('users');
+  console.log(getData);
 };
-
-var liveTweet = function(startTime) {
-  randomTweet();
-  var startTime = startTime || 1000,
-      loopTime = startTime * ~~(Math.random()*10); // Math.floor === ~~
-  console.log("Live Tweets: [on]/off");
-  refreshIntervalID.push(setInterval(function() {
-    var loopTime = startTime * Math.random()*20;
-    randomTweet();
-    scheduleNextTweet();
-    console.log("Loop time " + loopTime + " milliseconds");
-  }, loopTime));
-  var recentID = refreshIntervalID.length - 1;
-  console.log("Start liveTweet ID:" + refreshIntervalID[recentID]);
-  return refreshIntervalID;
+var htmlTweet = function(tweet) {
+  $("time.timeago").timeago();
+  var $tweet = $('<div class="newTweet"><a data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
+  return $tweet;
 };
-
-var stopLive = function() {
-  if (refreshIntervalID.length) {
-    for (var i = 0; i < refreshIntervalID.length; i++) {
-      console.log("Stop liveTweet ID:" + refreshIntervalID[i]);
-      clearInterval(refreshIntervalID[i]);
-    }
-    refreshIntervalID = [];
-    console.log("Live Tweets: on/[off]");
+var liveTweets = function(loopTime) {
+  loopTime = loopTime || 5000,
+  loopTime = ~~(Math.random() * loopTime);
+  generateRandomTweet();
+  var tweet = streams.home[index],
+      createTweet = htmlTweet(tweet).hide();
+  createTweet.prependTo($tweetStream).slideDown('slow');
+  index++;
+  if (liveTweetID.length === 0) {
+    console.log("Live Tweets: [on]/off");
   }
+  liveTweetID.push(setTimeout(liveTweets, loopTime));
+  console.log('Loop time: ' + loopTime + ' milliseconds');
 };
-
-var postTweet = function() {
-  var hasMessage = $('#new_message').val(),
-      twitterUser = $('#tweetUser').val() || "me";
-  if (hasMessage) {
-    var $tweet = $('<div class="newTweet"></div>'),
-        tweetMessage = $('#new_message').val(),
-        twitterTime = new Date(),
-        tweetTime = $('<br /><small><time class="timeago" title="'+ twitterTime + '"> '+ $.timeago(twitterTime) +'</time></small>'),
-        tweetUser = $('<b data-user="' + twitterUser + '">@' + twitterUser + '</b>: <br />');
-
-    $tweet.text(tweetMessage);
-    $tweet.prependTo($('#twitter')).append(tweetTime).prepend(tweetUser);
-    $('#new_message').val(null);
+var stopLiveTweets = function() {
+  console.log("Stop liveTweet IDs: " + liveTweetID);
+  for (var i = 0; i < liveTweetID.length; i++) {
+    clearInterval(liveTweetID[i]);
   }
+  liveTweetID = [];
+  console.log("Live Tweets: on/[off]");
 };
+
+
+// var postTweet = function() {
+//   var hasMessage = $('#new_message').val(),
+//       twitterUser = $('#tweetUser').val() || "me";
+//   if (hasMessage) {
+//     var $tweet = $('<div class="newTweet"></div>'),
+//         tweetMessage = $('#new_message').val(),
+//         twitterTime = new Date(),
+//         tweetTime = $('<br /><small><time class="timeago" title="'+ twitterTime + '"> '+ $.timeago(twitterTime) +'</time></small>'),
+//         tweetUser = $('<b data-user="' + twitterUser + '">@' + twitterUser + '</b>: <br />');
+
+//     $tweet.text(tweetMessage);
+//     $tweet.prependTo($('#twitter')).append(tweetTime).prepend(tweetUser);
+//     $('#new_message').val(null);
+//   }
+// };
 
 
 // Dylan's timeline
