@@ -38,24 +38,24 @@ var randomMessage = function(){
 }; // outputs a string message
 
 // generate random tweets on a random schedule
-var generateRandomTweet = function(){
+var generateRandomTweet = function(user){
   var tweet = {}; // creates {}
-  tweet.user = randomElement(users); // users?? // is window.users
+  tweet.user = user || randomElement(users); // users?? // is window.users // add ability to add user
   tweet.message = randomMessage(); // saves random string in {}
   tweet.created_at = new Date(); // saves current date in {}
   addTweet(tweet); // sends {} to addTweet to be stored in streams
 };
 
 // random generator 10 times
-for(var i = 0; i < 10; i++){
-  generateRandomTweet();
-}
+// for(var i = 0; i < 10; i++){
+//   generateRandomTweet();
+// }
 
 var scheduleNextTweet = function(){
   generateRandomTweet(); // randomly being called \/
   setTimeout(scheduleNextTweet, Math.random() * 1500); // randomly call itself
 };
-scheduleNextTweet(); // invoking function
+// scheduleNextTweet(); // invoking function
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
