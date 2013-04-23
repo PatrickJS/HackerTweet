@@ -37,7 +37,7 @@ jQuery ->
       else
         liveTweets()
         $(this).button('toggle').addClass('btn-info')
-    # $('body').append '<a href="http://hackreactor.com "><img style="position: absolute; bottom: 0; right: 0; border: 0;" src="http://i.imgur.com/x86kKmF.png alt="Built at Hack Reactor"></a>'
+    $('body').append '<a href="http://hackreactor.com/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://i.imgur.com/x86kKmF.png alt="Built at Hack Reactor"></a></h3>'
     # WIP highlight
     # $('#twitter div, #twitterTweet div').hover (->
     #   console.log('hi')

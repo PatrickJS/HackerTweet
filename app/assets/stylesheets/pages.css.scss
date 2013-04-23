@@ -8,9 +8,16 @@ body {
 }
 
 #HackerTweet {
-  display:inline !important;
-  line-height:80px;
+  // margin-bottom: 20px;
+  & h1 {
+    display:inline !important;
+    line-height:80px;
+  }
+  & h4 {
+    margin-top: 55px;
+  }
 }
+
 #MyImage {
   width: 73px;
   height: 73px;
