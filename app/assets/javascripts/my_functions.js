@@ -2,6 +2,22 @@ var $tweetStream = $('#twitter,#twitterTweet'),
     visitor = "me",
     index = 0, // streams.home[index];
     liveTweetID = [];
+    streams.twitter = {};
+
+$.each(streams.users, function(user) {
+  $.ajax({
+    type: "GET",
+    url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&include_entities=true',
+    dataType: "jsonp",
+    success: function(data){
+      streams.twitter[user] = data;
+      console.log('success AJAX for ' + user);
+    },
+    error: function(data){
+      console.log('error AJAX for ' + user);
+    }
+  });
+});
 
 var humanTime = function(time) {
   return $.timeago(time);
@@ -13,7 +29,7 @@ var clickNames = function(e) {
 };
 var htmlTweet = function(tweet) {
   $("time.timeago").timeago();
-  var $tweet = $('<div class="newTweet"><a data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
+  var $tweet = $('<div class="newTweet"><img class="pull-left inline avatar" src="' + streams.twitter[tweet.user].profile_image_url + '"><a data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
   return $tweet;
 };
 var liveTweets = function(loopTime) {
