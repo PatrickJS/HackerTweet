@@ -28,3 +28,12 @@ Guard
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+Todo
+* Some how fix the poor twitter resolution (not well-verse in handling twitter's api for bigger and original size I'm stuck with normal size)
+* Have a minimum height without affecting animation
+* actually do the timeline (I know how to do it since I'm able to explain how we're suppose to do it to Dylan and Evan)
+* use Faye or Pusher allowing anyone on the site to tweet each other in real time
+* refactor iphone alert to be changed
+* perhaps pics and auto link shortener
