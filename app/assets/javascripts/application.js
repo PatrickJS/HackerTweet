@@ -11,11 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery_timeago
 //= require data_generator
-//= require turbolinks
 //= require bootstrap
 //= require iphone
 //= require my_functions

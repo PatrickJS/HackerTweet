@@ -2,15 +2,15 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '4.0.0.beta1'
-gem 'jquery-turbolinks'
+# gem 'jquery-turbolinks'
 gem 'jquery-rails'
-gem 'turbolinks' # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# gem 'turbolinks' # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 1.0.1' # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'unicorn' # Use unicorn as the app server
 gem 'bootstrap-sass'
-gem 'font-awesome-sass-rails'
-gem 'simple_form'
-gem 'haml-rails'
+# gem 'font-awesome-sass-rails'
+# gem 'simple_form'
+# gem 'haml-rails'
 gem 'pusher'
 
 group :test, :development do
@@ -22,14 +22,14 @@ group :test, :development do
   gem 'guard-bundler'
   # gem 'guard-webrick'
   gem 'guard-zeus'
-  gem 'guard-livereload', require: false
+  gem 'guard-livereload', :require => false
   gem 'rack-livereload'
-  gem 'rb-fsevent',       require: false
+  gem 'rb-fsevent',       :require => false
   gem 'ruby_gntp'  # growl
 end
 
 group :development do
-  gem 'meta_request'
+  # gem 'meta_request'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
