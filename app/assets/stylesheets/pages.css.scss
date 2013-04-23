@@ -32,7 +32,6 @@ body {
 #twitter {
   display: none;
   & .newTweet {
-    min-height: 4.5em;
     border-radius: 5px;
     margin-bottom: 5px;
     background-color: gray;
@@ -42,6 +41,7 @@ body {
     width: 48px;
     height: 48px;
     margin-right: 5px;
+    padding-bottom: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -49,7 +49,6 @@ body {
 }
 #twitterTweet {
   & .newTweet {
-    min-height: 5em;
     border-radius: 10px;
     margin-bottom: 10px;
     background-color: whitesmoke;
@@ -59,6 +58,7 @@ body {
     width: 73px;
     height: 73px;
     margin-right: 6px;
+    padding-bottom: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;

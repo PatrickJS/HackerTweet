@@ -22,13 +22,13 @@ jQuery ->
       message = $('#new_message').val() || randomMessage()
       tweet = writeTweet(message,user)
       createTweet = htmlTweet(tweet).hide()
-      createTweet.prependTo($tweetStream).fadeIn()
+      createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
       index++
     $('#randomTweet').on 'click', ->
       generateRandomTweet()
       tweet = streams.home[index]
       createTweet = htmlTweet(tweet).hide()
-      createTweet.prependTo($tweetStream).fadeIn('fast')
+      createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
       index++
     $('#liveTweet').on 'click', ->
       if $(this).hasClass 'btn-info'
@@ -37,19 +37,4 @@ jQuery ->
       else
         liveTweets()
         $(this).button('toggle').addClass('btn-info')
-    $('body').append '<a href="http://hackreactor.com/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://i.imgur.com/x86kKmF.png alt="Built at Hack Reactor"></a></h3>'
-    # WIP highlight
-    # $('#twitter div, #twitterTweet div').hover (->
-    #   console.log('hi')
-    # ), ->
-    #   console.log('bye')
-    # $('#languages .btn').on 'click', (e) ->
-    #   console.log 'click', this, arguments
-    #   element = $(e.currentTarget)
-    #   e.preventDefault()
-    #   $.ajax {
-    #     url: element.attr('href')
-    #     complete: (xhr, status) ->
-    #       console.log 'complete', this, arguments
-    #       $('#tweets').html xhr.responseText
-    #   }
+    $('body').append '<a href="http://hackreactor.com/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://dl.dropboxusercontent.com/u/7020515/assets/img/HackReactor.png" alt="Built at Hack Reactor"></a></h3>'
