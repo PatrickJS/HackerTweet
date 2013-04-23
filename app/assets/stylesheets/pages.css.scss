@@ -3,6 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 @import "bootstrap-responsive";
+body {
+  background-image: url('https://dl.dropboxusercontent.com/u/7020515/backgrounds/squairy_light.png');
+}
+#HackerTweet {
+  display:inline !important;
+  line-height:80px;
+}
+#MyImage {
+  width: 73px;
+  height: 73px;
+  border: 4px solid #fff;
+  background-color: #fff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
 
 #twitter {
   display: none;
