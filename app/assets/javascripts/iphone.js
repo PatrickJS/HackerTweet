@@ -9,13 +9,7 @@
 
 var TIME = 400;
 var letters_interval;
-
-$(document).ready(function(){
-
-  iphone.init();
-
-});
-
+var $twitterTweets = $('#twitter');
 
 iphone = {
 
@@ -151,7 +145,7 @@ iphone = {
 
     } else {
 
-      $('#iphone_slider').bind("touchstart", function(e){
+      $('#iphone_slider').on("touchstart", function(e){
 
         e.preventDefault();
 
@@ -171,7 +165,7 @@ iphone = {
         slide_area_width = parseInt($('#iphone_unlock').width());
         slider_left = parseInt($('#iphone_slider').css('left'));
 
-        $(document).bind("touchmove", function(e){
+        $(document).on("touchmove", function(e){
 
           var x = orig.changedTouches[0].pageX - element.left;
 
@@ -186,7 +180,7 @@ iphone = {
           $(self).css(properties);
 
         });
-      }).bind("touchend", function(){
+      }).on("touchend", function(){
         $(document).unbind('touchmove');
         iphone.endSlide();
       });
@@ -234,7 +228,7 @@ iphone = {
 
 
   turnOff : function(){
-    $('#twitter').hide();
+    $twitterTweets.hide();
     iphone.soundLock();
 
     iphone.status = 'off';
@@ -280,7 +274,7 @@ iphone = {
 
 
   unlock : function(){
-    $('#twitter').show();
+    $twitterTweets.show();
     iphone.soundUnlock();
 
     iphone.status = 'unlock';
