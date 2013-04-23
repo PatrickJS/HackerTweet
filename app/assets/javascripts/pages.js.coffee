@@ -6,7 +6,17 @@ jQuery ($) ->
     $('#tweetUser').on 'blur', ->
       tweetUser = $(this).val()
       console.log tweetUser
-      # streams.users.[value]
+      # streams.users[value]
+    $('#new_message').on 'keyup keypress blur change', ->
+      key_value = 140 - +$(this).val().length # console.log($(this).val())
+      if key_value < 0
+        value = 'style="color:red">' + key_value + ''
+        $('#postTweet').attr("disabled", "disabled")
+      else
+        value = '>' + key_value + ''
+        $('#postTweet').removeAttr('disabled')
+      $('h6').html('<span ' + value + ' characters remaining</span>')
+      # console.log(value + ' characters remaining')
     $('#postTweet').on 'click', ->
       postTweet()
     $('#randomTweet').on 'click', ->
