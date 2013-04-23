@@ -23,6 +23,7 @@ jQuery ->
       tweet = writeTweet(message,user)
       createTweet = htmlTweet(tweet).hide()
       createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
+      $('#new_message').val('')
       index++
     $('#randomTweet').on 'click', ->
       generateRandomTweet()

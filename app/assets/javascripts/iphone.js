@@ -425,14 +425,15 @@ iphone = {
     var week_days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
     var year_month = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
     var minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
-    var hours = (date.getHours() < 10 && date.getHours() > 0) ? '0' + date.getHours() : (date.getHours() > 12) ? date.getHours() - 12 : 12;
+    var hours = (date.getHours() < 10 && date.getHours() > 0) ? date.getHours() : (date.getHours() > 12) ? date.getHours() - 12 : 12;
+    var ampm = (date.getHours() > 12) ? ' PM' : ' AM';
     // if (hours === 0) {
     //   hours =
     // } else if (hours > 12) {
     //   hours = hours - 12;
     // }
     $('#iphone_lock_time').html(hours + '<span>:</span>' + minutes);
-    $('#iphone_headline_clock').html(hours + ':' + minutes);
+    $('#iphone_headline_clock').html(hours + ':' + minutes + ampm);
     $('#iphone_lock_date').html(week_days[date.getDay()] + ', ' + year_month[date.getMonth()] + ' ' + date.getDate());
 
     $('#iphone_icon_day').html(week_days[date.getDay()]);
