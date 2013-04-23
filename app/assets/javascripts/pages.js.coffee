@@ -7,8 +7,10 @@ jQuery ($) ->
       tweetUser = $(this).val()
       console.log tweetUser
       # streams.users[value]
-    $('#new_message').on 'keyup keypress blur change paste input propertychange', ->
-      key_value = 140 - +$(this).val().length # console.log($(this).val())
+    $('#new_message').on 'input', ->
+      message = $(this).val()
+      console.log message
+      key_value = 140 - +message.length
       if key_value < 0
         value = 'style="color:red">' + key_value + ''
         $('#postTweet').attr("disabled", "disabled")
