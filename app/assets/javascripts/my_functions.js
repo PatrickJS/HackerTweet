@@ -67,7 +67,7 @@ var htmlTweet = function(tweet) {
     avatar_url = streams.twitter[tweet.user].profile_image_url_https;
   }
   $("time.timeago").timeago();
-  var $tweet = $('<div class="newTweet"><img class="pull-left avatar" src="' + avatar_url + '"><a data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
+  var $tweet = $('<div class="newTweet"><a href="https://twitter.com/' + tweet.user + '/" target="_blank"><img class="pull-left avatar" src="' + avatar_url + '"></a><a class="user" data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
   return $tweet;
 };
 var liveTweets = function(loopTime) {

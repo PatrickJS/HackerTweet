@@ -1,6 +1,6 @@
 jQuery ->
     iphone.init()
-    $tweetStream.on 'click','a', clickNames
+    $tweetStream.on 'click','a.user', clickNames
     $('#tweetUser').on 'blur', ->
       tweetUser = $(this).val() || "visitor"
       unless tweetUser == Object.keys(users)
