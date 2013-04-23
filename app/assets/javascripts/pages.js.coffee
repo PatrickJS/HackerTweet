@@ -1,12 +1,10 @@
-# jQuery ->
-#   if $('body.pages.index').length
-jQuery ($) ->
-    # $('time.timeago').timeago()
+jQuery ->
+    iphone.init()
     $tweetStream.on 'click','a', clickNames
     $('#tweetUser').on 'blur', ->
-      tweetUser = $(this).val()
-      console.log tweetUser
-      # streams.users[value]
+      tweetUser = $(this).val() || "visitor"
+      unless tweetUser == Object.keys(users)
+        createUserStream(tweetUser)
     $('#new_message').on 'input', ->
       message = $(this).val()
       console.log message
@@ -20,12 +18,17 @@ jQuery ($) ->
       $('h6').html('<span ' + value + ' characters remaining</span>')
       # console.log(value + ' characters remaining')
     $('#postTweet').on 'click', ->
-      postTweet()
+      user = $('#tweetUser').val() || "visitor"
+      message = $('#new_message').val() || randomMessage()
+      tweet = writeTweet(message,user)
+      createTweet = htmlTweet(tweet).hide()
+      createTweet.prependTo($tweetStream).fadeIn()
+      index++
     $('#randomTweet').on 'click', ->
       generateRandomTweet()
       tweet = streams.home[index]
       createTweet = htmlTweet(tweet).hide()
-      createTweet.prependTo($tweetStream).slideDown('fast')
+      createTweet.prependTo($tweetStream).fadeIn('fast')
       index++
     $('#liveTweet').on 'click', ->
       if $(this).hasClass 'btn-info'
@@ -34,6 +37,7 @@ jQuery ($) ->
       else
         liveTweets()
         $(this).button('toggle').addClass('btn-info')
+    # $('body').append '<a href="http://hackreactor.com "><img style="position: absolute; bottom: 0; right: 0; border: 0;" src="http://i.imgur.com/x86kKmF.png alt="Built at Hack Reactor"></a>'
     # WIP highlight
     # $('#twitter div, #twitterTweet div').hover (->
     #   console.log('hi')

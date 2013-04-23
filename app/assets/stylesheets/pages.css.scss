@@ -25,7 +25,7 @@ body {
 #twitter {
   display: none;
   & .newTweet {
-    height: 4.5em;
+    min-height: 4.5em;
     border-radius: 5px;
     margin-bottom: 5px;
     background-color: gray;
@@ -42,7 +42,7 @@ body {
 }
 #twitterTweet {
   & .newTweet {
-    height: 5em;
+    min-height: 5em;
     border-radius: 10px;
     margin-bottom: 10px;
     background-color: whitesmoke;
