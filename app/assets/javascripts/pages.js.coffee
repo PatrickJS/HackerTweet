@@ -32,6 +32,11 @@ jQuery ($) ->
       else
         liveTweets()
         $(this).button('toggle').addClass('btn-info')
+    # WIP highlight
+    # $('#twitter div, #twitterTweet div').hover (->
+    #   console.log('hi')
+    # ), ->
+    #   console.log('bye')
     # $('#languages .btn').on 'click', (e) ->
     #   console.log 'click', this, arguments
     #   element = $(e.currentTarget)

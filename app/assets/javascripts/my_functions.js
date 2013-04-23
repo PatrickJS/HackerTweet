@@ -7,7 +7,7 @@ var $tweetStream = $('#twitter,#twitterTweet'),
 $.each(streams.users, function(user) {
   $.ajax({
     type: "GET",
-    url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
+    url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&include_entities=true',
     dataType: "jsonp",
     statusCode: {
       400: function() {
@@ -37,7 +37,7 @@ var clickNames = function(e) {
 var htmlTweet = function(tweet) {
   var avatar_url = '';
   if (streams.twitter[tweet.user]) {
-    avatar_url = streams.twitter[tweet.user].profile_image_url;
+    avatar_url = streams.twitter[tweet.user].profile_image_url_https;
   } else {
     avatar_url = 'https://si0.twimg.com/profile_images/1694210876/ysoserious_bigger.jpg';
   }
