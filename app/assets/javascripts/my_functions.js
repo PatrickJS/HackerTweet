@@ -7,8 +7,15 @@ var $tweetStream = $('#twitter,#twitterTweet'),
 $.each(streams.users, function(user) {
   $.ajax({
     type: "GET",
-    url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&include_entities=true',
+    url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
     dataType: "jsonp",
+    statusCode: {
+      400: function() {
+        console.log('error AJAX for ' + user);
+      },
+      200: function() {
+      }
+    },
     success: function(data){
       streams.twitter[user] = data;
       console.log('success AJAX for ' + user);
@@ -28,8 +35,14 @@ var clickNames = function(e) {
   console.log(getData);
 };
 var htmlTweet = function(tweet) {
+  var avatar_url = '';
+  if (streams.twitter[tweet.user]) {
+    avatar_url = streams.twitter[tweet.user].profile_image_url;
+  } else {
+    avatar_url = 'https://si0.twimg.com/profile_images/1694210876/ysoserious_bigger.jpg';
+  }
   $("time.timeago").timeago();
-  var $tweet = $('<div class="newTweet"><img class="pull-left inline avatar" src="' + streams.twitter[tweet.user].profile_image_url + '"><a data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
+  var $tweet = $('<div class="newTweet"><img class="pull-left inline avatar" src="' + avatar_url + '"><a data-users="' + tweet.user + '" href=""><small>@</small>' + tweet.user + '</a>:<br />' + tweet.message + ' <br /><small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small></div>');
   return $tweet;
 };
 var liveTweets = function(loopTime) {

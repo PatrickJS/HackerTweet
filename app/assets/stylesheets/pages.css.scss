@@ -19,31 +19,39 @@ body {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
+.newTweet {
 
+}
 #twitter {
   display: none;
   & .newTweet {
+    height: 4.5em;
     border-radius: 5px;
     margin-bottom: 5px;
     background-color: gray;
     padding: 4px;
   }
   & .avatar {
-    width: 73px;
-    height: 73px;
+    width: 48px;
+    height: 48px;
     margin-right: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
   }
 }
-#twitterTweet .newTweet {
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background-color: whitesmoke;
-  padding: 8px;
+#twitterTweet {
+  & .newTweet {
+    height: 5em;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: whitesmoke;
+    padding: 8px;
+  }
   & .avatar {
-    margin: 6px;
+    width: 73px;
+    height: 73px;
+    margin-right: 6px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
