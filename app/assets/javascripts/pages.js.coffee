@@ -7,7 +7,7 @@ jQuery ($) ->
       tweetUser = $(this).val()
       console.log tweetUser
       # streams.users[value]
-    $('#new_message').on 'keyup keypress blur change', ->
+    $('#new_message').on 'keyup keypress blur change paste input propertychange', ->
       key_value = 140 - +$(this).val().length # console.log($(this).val())
       if key_value < 0
         value = 'style="color:red">' + key_value + ''
