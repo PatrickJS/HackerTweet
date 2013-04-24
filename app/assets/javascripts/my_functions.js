@@ -15,7 +15,6 @@ var getJSONP = function(user) {
 var createUserStream = function(user) {
   if (!streams.users.hasOwnProperty(user)) {
     streams.users[user] = [];
-    visitor = user;
     window.users = Object.keys(streams.users);
     console.log(user + ' added to streams.users and users');
     getJSONP(user);
@@ -32,7 +31,7 @@ var clickNames = function(e) {
 var htmlTweet = function(tweet) {
   var avatar_url = 'https://si0.twimg.com/profile_images/1694210876/ysoserious_bigger.jpg';
   if (streams.twitter[tweet.user]) {
-    avatar_url = streams.twitter[tweet.user].profile_image_url_https;
+    avatar_url = (streams.twitter[tweet.user].profile_image_url_https).replace('_normal', '_bigger');
   }
   $("time.timeago").timeago();
   var $tweet = $(
