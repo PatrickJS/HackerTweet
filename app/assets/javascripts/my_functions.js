@@ -1,4 +1,4 @@
-var $tweetStream = $('#twitter,#twitterTweet'),
+var $tweetStream = $('#twitter, #twitterTweet'),
     visitor = "me",
     tweetIndex = 0, // streams.home[tweetIndex];
     liveTweetID = 0,
@@ -91,7 +91,10 @@ var stopLiveTweets = function() {
   console.warn("Live Tweets: on/[off]");
 };
 var clearTweets = function() {
-  $tweetStream.html('');
+  $tweetStream.animate({'height': '0px'}, 'fast',"linear", function() { $(this).html('').removeAttr('style'); });
+  if (iphone.status == 'unlock') {
+    $('#twitter').show();
+  }
   tweetIndex = 0;
   streams.home = [];
   $.each(streams.users, function(user) {
