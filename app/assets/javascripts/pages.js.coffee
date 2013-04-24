@@ -39,4 +39,4 @@ jQuery ->
         liveTweets()
         $(this).button('toggle').addClass('btn-info')
     $('#clearTweets').on 'click', clearTweets
-    $('body').append '<div id="banner"><a href="">Built at HackReactor</a></div></a></h3>'
+    $('body').append '<div id="banner"><a href="http://hackreactor.com/" target="_blank">Built at HackReactor</a></div></a>'

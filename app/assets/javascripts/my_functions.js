@@ -91,10 +91,12 @@ var stopLiveTweets = function() {
   console.warn("Live Tweets: on/[off]");
 };
 var clearTweets = function() {
-  $tweetStream.animate({'height': '0px'}, 'fast',"linear", function() { $(this).html('').removeAttr('style'); });
-  if (iphone.status == 'unlock') {
-    $('#twitter').show();
-  }
+  $tweetStream.animate({'height': '0px'}, 'fast',"linear", function() {
+    $(this).html('').removeAttr('style');
+    if (iphone.status == 'unlock') {
+      $('#twitter').show();
+    }
+  });
   tweetIndex = 0;
   streams.home = [];
   $.each(streams.users, function(user) {
