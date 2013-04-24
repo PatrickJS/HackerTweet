@@ -1,4 +1,6 @@
 jQuery ->
+    $.each streams.users, (user) ->
+      getJSONP(user)
     iphone.init()
     $tweetStream.on 'click','a.user', clickNames
     $('#tweetUser').on 'blur', ->

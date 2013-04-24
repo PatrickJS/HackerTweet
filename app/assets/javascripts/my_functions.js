@@ -5,52 +5,20 @@ var $tweetStream = $('#twitter, #twitterTweet'),
     visitor = 'visitor';
     streams.twitter = {};
 
-$.each(streams.users, function(user) {
-  $.ajax({
-    type: "GET",
-    url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
-    dataType: "jsonp",
-    statusCode: {
-      400: function() {
-        console.log('error AJAX for ' + user);
-      },
-      200: function() {
-      }
-    },
-    success: function(data){
-      streams.twitter[user] = data;
-      console.log('success AJAX for ' + user);
-    },
-    error: function(data){
-      console.log('error AJAX for ' + user);
-    }
-  });
-});
+var getJSONP = function(user) {
+  return $.get('https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
+      function(data) {
+        streams.twitter[user] = data;
+        console.log('success AJAX for ' + user);
+      }, "jsonp" );
+};
 var createUserStream = function(user) {
   if (!streams.users.hasOwnProperty(user)) {
     streams.users[user] = [];
     visitor = user;
     window.users = Object.keys(streams.users);
     console.log(user + ' added to streams.users and users');
-    $.ajax({
-      type: "GET",
-      url: 'https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
-      dataType: "jsonp",
-      statusCode: {
-        400: function() {
-          console.log('error AJAX for ' + user);
-        },
-        200: function() {
-        }
-      },
-      success: function(data){
-        streams.twitter[user] = data;
-        console.log('success AJAX for ' + user);
-      },
-      error: function(data){
-        console.log('error AJAX for ' + user);
-      }
-    });
+    getJSONP(user);
   }
 };
 var humanTime = function(time) {
@@ -71,7 +39,7 @@ var htmlTweet = function(tweet) {
     '<div class="newTweet">' +
       '<a href="https://twitter.com/' + tweet.user + '/" target="_blank">' +
       '<img class="pull-left avatar" src="' + avatar_url + '"></a>' +
-      '<a class="user" data-users="' + tweet.user + '" href="">' +
+      '<a class="user" datausers="' + tweet.user + '" href="">' +
       '<small>@</small>' + tweet.user + '</a>:' +
       '<br />' + tweet.message + ' <br />' +
       '<small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small>' +
