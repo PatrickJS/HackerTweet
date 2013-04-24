@@ -24,33 +24,31 @@
           box-shadow: #c1bfbf 0 0 0 1px;
   -webkit-font-smoothing: antialiased;
      -moz-font-smoothing: antialiased;
-}
-
-.iphone:after {
-  content: '';
-  width: 4px;
-  height: 3px;
-  position: absolute;
-  top: -1px;
-  left: 120px;
-  background: rgba(0,0,0,0.7);
-  -webkit-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
-     -moz-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
-          box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
-}
-
-.iphone:before {
-  content: '';
-  width: 373px;
-  height: 3px;
-  position: absolute;
-  top: 646px;
-  left:0px;
-  z-index: 0;
-  background: rgba(0,0,0,0.7);
-  -webkit-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
-     -moz-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
-          box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+  &:after {
+    content: '';
+    width: 4px;
+    height: 3px;
+    position: absolute;
+    top: -1px;
+    left: 120px;
+    background: rgba(0,0,0,0.7);
+    -webkit-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+       -moz-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+            box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+  }
+  &:before {
+    content: '';
+    width: 373px;
+    height: 3px;
+    position: absolute;
+    top: 646px;
+    left: 0;
+    z-index: 0;
+    background: rgba(0,0,0,0.7);
+    -webkit-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+       -moz-box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+            box-shadow: rgba(0,0,0,1) 0 0 1px, inset rgba(0,0,0,0.1) 1px 0 0, inset rgba(0,0,0,0.1) -1px 0 0;
+  }
 }
 
 .iphone * {
