@@ -444,13 +444,13 @@ iphone = {
 
 
   stopTextAnimate : function(){
-    if (iphone.is_mobile()) { return; }
+    // if (iphone.is_mobile()) { return }
     clearInterval(letters_interval);
   },
 
 
   startTextAnimate : function(){
-    if (iphone.is_mobile()) { return; }
+    // if (iphone.is_mobile()) { return }
     iphone.animateLetters();
   },
 
@@ -497,7 +497,7 @@ iphone = {
 
 
   soundFix : function(){
-    if (iphone.is_mobile()) { return }
+    // if (iphone.is_mobile()) { return }
 
     return;
     var id = 'soundLock';
@@ -511,7 +511,7 @@ iphone = {
 
 
   soundLock : function(){
-    if (iphone.is_mobile()) { return }
+    // if (iphone.is_mobile()) { return }
 
     var id = 'soundLock';
     document.getElementById(id).pause();
@@ -522,7 +522,7 @@ iphone = {
 
 
   soundUnlock : function(){
-    if (iphone.is_mobile()) { return }
+    // if (iphone.is_mobile()) { return }
 
     var id = 'soundUnlock';
     document.getElementById(id).volume = 0.3;
