@@ -65,7 +65,9 @@ var stopLiveTweets = function() {
   console.warn("Live Tweets: on/[off]");
 };
 var clearTweets = function() {
-  $tweetStream.animate({'height': '0px'}, 'fast',"linear", function() {
+  var speed = (tweetIndex > 30) ? 'slow' : 'fast';
+  $tweetStream.animate({'height': '0px'}, speed, function() {
+    console.log(speed);
     $(this).html('').removeAttr('style');
     if (iphone.status == 'unlock') {
       $('#twitter').show();
