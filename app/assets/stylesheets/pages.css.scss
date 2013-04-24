@@ -26,9 +26,7 @@ body {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-.newTweet {
 
-}
 #twitter {
   display: none;
   & .newTweet {
@@ -37,11 +35,10 @@ body {
     background-color: gray;
     padding: 4px;
   }
-  & .avatar {
+  & img.avatar {
     width: 48px;
     height: 48px;
     margin-right: 5px;
-    padding-bottom: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -54,14 +51,13 @@ body {
     background-color: whitesmoke;
     padding: 8px;
   }
-  & .avatar {
+  & img.avatar {
     width: 73px;
     height: 73px;
     margin-right: 6px;
-    padding-bottom: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
   }
 }
 
