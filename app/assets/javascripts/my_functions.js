@@ -1,6 +1,6 @@
 var $tweetStream = $('#twitter,#twitterTweet'),
     visitor = "me",
-    index = 0, // streams.home[index];
+    tweetIndex = 0, // streams.home[tweetIndex];
     liveTweetID = 0,
     visitor = 'visitor';
     streams.twitter = {};
@@ -74,10 +74,10 @@ var liveTweets = function(loopTime) {
   loopTime = loopTime || 10000,
   loopTime = ~~(Math.random() * loopTime);
   generateRandomTweet();
-  var tweet = streams.home[index],
+  var tweet = streams.home[tweetIndex],
       createTweet = htmlTweet(tweet).hide();
   createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'slow');
-  index++;
+  tweetIndex++;
   if (liveTweetID === 0) {
     console.warn("Live Tweets: [on]/off");
   }
@@ -89,4 +89,13 @@ var stopLiveTweets = function() {
   clearInterval(liveTweetID);
   liveTweetID = 0;
   console.warn("Live Tweets: on/[off]");
+};
+var clearTweets = function() {
+  $tweetStream.html('');
+  tweetIndex = 0;
+  streams.home = [];
+  $.each(streams.users, function(user) {
+    streams.users[user] = [];
+  });
+  console.warn("clear out all tweets");
 };

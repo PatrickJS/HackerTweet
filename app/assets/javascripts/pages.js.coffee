@@ -24,13 +24,13 @@ jQuery ->
       createTweet = htmlTweet(tweet).hide()
       createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
       $('#new_message').val('')
-      index++
+      tweetIndex++
     $('#randomTweet').on 'click', ->
       generateRandomTweet()
-      tweet = streams.home[index]
+      tweet = streams.home[tweetIndex]
       createTweet = htmlTweet(tweet).hide()
       createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
-      index++
+      tweetIndex++
     $('#liveTweet').on 'click', ->
       if $(this).hasClass 'btn-info'
         stopLiveTweets()
@@ -38,4 +38,5 @@ jQuery ->
       else
         liveTweets()
         $(this).button('toggle').addClass('btn-info')
-    $('body').append '<a href="http://hackreactor.com/" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://dl.dropboxusercontent.com/u/7020515/assets/img/HackReactor.png" alt="Built at Hack Reactor"></a></h3>'
+    $('#clearTweets').on 'click', clearTweets
+    $('body').append '<div id="banner"><a href="">Built at HackReactor</a></div></a></h3>'
