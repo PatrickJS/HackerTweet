@@ -48,6 +48,7 @@ jQuery ->
     tweet = writeTweet(message,user)
     renderTweet(tweet)
     $('#new_message').val('')
+    $('h6').html('<span>140 characters remaining</span>')
   $('#randomFakeTweet').on 'click', ->
     if currentUser
       generateRandomTweet(currentUser);
