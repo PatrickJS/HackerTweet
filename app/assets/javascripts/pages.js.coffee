@@ -1,6 +1,10 @@
 jQuery ->
   $.each streams.users, (user) ->
     getJSONP(user)
+  $("time.timeago").timeago();
+  channel.bind 'pusher:subscription_succeeded', ->
+    channel.trigger('client-new_message', {'message': 'working', 'user':'pusher'})
+    console.log 'bind now'
   channel.bind 'new_message', (data) ->
     console.log data
     unless data.user == Object.keys(users)
@@ -35,23 +39,26 @@ jQuery ->
   $('#postTweet').on 'click', ->
     user = $('#tweetUser').val() || "visitor"
     message = $('#new_message').val() || randomMessage()
+    if liveMode
+      channel.trigger 'client-new_message', { 'user': user, 'message': message }
+      liveTweet { 'user': user, 'message': message}
     tweet = writeTweet(message,user)
     createTweet = htmlTweet(tweet).hide()
     createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
     $('#new_message').val('')
     tweetIndex++
-  $('#randomTweet').on 'click', ->
+  $('#randomFakeTweet').on 'click', ->
     generateRandomTweet()
     tweet = streams.home[tweetIndex]
     createTweet = htmlTweet(tweet).hide()
     createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
     tweetIndex++
-  $('#liveTweet').on 'click', ->
+  $('#liveFakeTweet').on 'click', ->
     if $(this).hasClass 'btn-info'
-      stopLiveTweets()
+      stopLiveFakeTweets()
       $(this).button('toggle').removeClass('btn-info')
     else
-      liveTweets()
+      liveFakeTweets()
       $(this).button('toggle').addClass('btn-info')
   $('#clearTweets').on 'click', clearTweets
   $('body').append '<div id="banner"><a href="http://hackreactor.com/" target="_blank">Built at HackReactor</a></div></a>'

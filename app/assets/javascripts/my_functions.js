@@ -1,15 +1,23 @@
 var $tweetStream = $('#twitter, #twitterTweet'),
     visitor = "me",
     tweetIndex = 0, // streams.home[tweetIndex];
-    liveTweetID = 0,
+    liveFakeTweetID = 0,
     visitor = 'visitor',
-    pusher = new Pusher('4e695c8a13da46530407'), // uses your API KEY
+    pusher = new Pusher('4e695c8a13da46530407');
     channel = pusher.subscribe('tweet');
+    liveMode = false;
     streams.twitter = {};
 Pusher.log = function(message) {
   if (window.console && window.console.log) {
     window.console.log(message);
   }
+};
+var liveTweet = function(data) {
+  console.log(data);
+  channel.bind('pusher:subscription_succeeded', function() {
+    var triggered = channel.trigger('client-new_message', data);
+    console.log(triggered);
+  });
 };
 var getJSONP = function(user) {
   return $.get('https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
@@ -52,7 +60,7 @@ var htmlTweet = function(tweet) {
     );
   return $tweet;
 };
-var liveTweets = function(loopTime) {
+var liveFakeTweets = function(loopTime) {
   loopTime = loopTime || 10000,
   loopTime = ~~(Math.random() * loopTime);
   generateRandomTweet();
@@ -60,14 +68,14 @@ var liveTweets = function(loopTime) {
       createTweet = htmlTweet(tweet).hide();
   createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'slow');
   tweetIndex++;
-  if (liveTweetID === 0) { console.warn("Live Tweets: [on]/off"); }
-  liveTweetID = setTimeout(liveTweets, loopTime);
+  if (liveFakeTweetID === 0) { console.warn("Live Tweets: [on]/off"); }
+  liveFakeTweetID = setTimeout(liveFakeTweets, loopTime);
   console.log('Loop time: ' + loopTime + ' milliseconds');
 };
-var stopLiveTweets = function() {
-  console.log("Stop liveTweet ID: " + liveTweetID);
-  clearInterval(liveTweetID);
-  liveTweetID = 0;
+var stopLiveFakeTweets = function() {
+  console.log("Stop liveFakeTweet ID: " + liveFakeTweetID);
+  clearInterval(liveFakeTweetID);
+  liveFakeTweetID = 0;
   console.warn("Live Tweets: on/[off]");
 };
 var clearTweets = function() {
