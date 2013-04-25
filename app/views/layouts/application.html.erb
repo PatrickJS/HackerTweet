@@ -3,10 +3,12 @@
 <head>
   <title><%= content_for?(:title) ? yield(:title) : "HackerTweet" %></title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "HackerTweet" %>">
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", async: 'true',"data-turbolinks-track" => true %>
+  <script src="https://d3dy5gmtp8yhk7.cloudfront.net/2.0/pusher.min.js"></script>
   <%= csrf_meta_tags %>
   <%= yield(:head) %>
 </head>

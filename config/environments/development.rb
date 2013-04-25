@@ -26,7 +26,7 @@ HackerTweet::Application.configure do
   config.assets.debug = true
 
   # Live Reload in middleware
-  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
+  # config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
 
   # Email MailGun
   config.action_mailer.default_url_options = {:host => 'localhost:3000'}

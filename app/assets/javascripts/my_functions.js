@@ -2,9 +2,15 @@ var $tweetStream = $('#twitter, #twitterTweet'),
     visitor = "me",
     tweetIndex = 0, // streams.home[tweetIndex];
     liveTweetID = 0,
-    visitor = 'visitor';
+    visitor = 'visitor',
+    pusher = new Pusher('4e695c8a13da46530407'), // uses your API KEY
+    channel = pusher.subscribe('tweet');
     streams.twitter = {};
-
+Pusher.log = function(message) {
+  if (window.console && window.console.log) {
+    window.console.log(message);
+  }
+};
 var getJSONP = function(user) {
   return $.get('https://api.twitter.com/1/users/show.json?screen_name=' + user +'&size=bigger&include_entities=true',
       function(data) {

@@ -22,8 +22,8 @@ group :test, :development do
   gem 'guard-bundler'
   # gem 'guard-webrick'
   gem 'guard-zeus'
-  gem 'guard-livereload', :require => false
-  gem 'rack-livereload'
+  # gem 'guard-livereload', :require => false
+  # gem 'rack-livereload'
   gem 'rb-fsevent',       :require => false
   gem 'ruby_gntp'  # growl
 end

@@ -1,6 +1,19 @@
 jQuery ->
   $.each streams.users, (user) ->
     getJSONP(user)
+  channel.bind 'new_message', (data) ->
+    console.log data
+    unless data.user == Object.keys(users)
+      createUserStream(data.user)
+    user = data.user || randomUser()
+    message = data.message || randomMessage()
+    tweet = writeTweet(message,user)
+    createTweet = htmlTweet(tweet).hide()
+    createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
+    tweetIndex++
+  pusher.connection.bind 'state_change', (states) ->
+  # states = {previous: 'oldState', current: 'newState'}
+    $('div#status').text "Pusher's current state is " + states.current
   iphone.init()
   $tweetStream.on 'click','a.user', clickNames
   $('#tweetUser').on 'blur', ->

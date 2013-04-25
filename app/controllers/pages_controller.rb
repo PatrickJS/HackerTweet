@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def pusher(message)
-    Pusher['activity'].trigger('message', {message: message})
+    Pusher['tweet'].trigger('new_message', {message: message})
   end
 
 
