@@ -12,9 +12,7 @@ jQuery ->
     user = data.user || randomUser()
     message = data.message || randomMessage()
     tweet = writeTweet(message,user)
-    createTweet = htmlTweet(tweet).hide()
-    createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
-    tweetIndex++
+    renderTweet(tweet)
   channel.bind 'iphone', (data) ->
     iphone.alert(data.message)
   pusher.connection.bind 'state_change', (states) ->
@@ -45,19 +43,15 @@ jQuery ->
       channel.trigger 'client-new_message', { 'user': user, 'message': message }
       liveTweet { 'user': user, 'message': message}
     tweet = writeTweet(message,user)
-    createTweet = htmlTweet(tweet).hide()
-    createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
+    renderTweet(tweet)
     $('#new_message').val('')
-    tweetIndex++
   $('#randomFakeTweet').on 'click', ->
     if currentUser
       generateRandomTweet(currentUser);
     else
       generateRandomTweet();
     tweet = streams.home[tweetIndex]
-    createTweet = htmlTweet(tweet).hide()
-    createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
-    tweetIndex++
+    renderTweet(tweet)
   $('#liveFakeTweet').on 'click', ->
     if $(this).hasClass 'btn-info'
       stopLiveFakeTweets()

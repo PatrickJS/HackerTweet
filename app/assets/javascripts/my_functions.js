@@ -53,7 +53,7 @@ var htmlTweet = function(tweet) {
     '<div class="newTweet">' +
       '<a href="https://twitter.com/' + tweet.user + '/" target="_blank">' +
       '<img class="pull-left avatar" src="' + avatar_url + '"></a>' +
-      '<a class="user" datausers="' + tweet.user + '" href="">' +
+      '<a class="user" data-users="' + tweet.user + '" href="">' +
       '<small>@</small>' + tweet.user + '</a>:' +
       '<br />' + tweet.message + ' <br />' +
       '<small><time class="timeago" datetime="'+ tweet.created_at.toISOString() + '">' + humanTime(tweet.created_at) + '</time></small>' +
@@ -69,10 +69,8 @@ var liveFakeTweets = function(loopTime) {
   } else {
     generateRandomTweet();
   }
-  var tweet = streams.home[tweetIndex],
-      createTweet = htmlTweet(tweet).hide();
-  createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'slow');
-  tweetIndex++;
+  var tweet = streams.home[tweetIndex];
+  renderTweet(tweet, 'slow');
   if (liveFakeTweetID === 0) { console.warn("Live Tweets: [on]/off"); }
   liveFakeTweetID = setTimeout(liveFakeTweets, loopTime);
   console.log('Loop time: ' + loopTime + ' milliseconds');
@@ -98,4 +96,10 @@ var clearTweets = function() {
     streams.users[user] = [];
   });
   console.warn("clear out all tweets");
+};
+var renderTweet = function(tweet, speed) {
+  speed = speed || 'fast';
+  var createTweet = htmlTweet(tweet).hide();
+  createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"}, speed);
+  tweetIndex++;
 };
