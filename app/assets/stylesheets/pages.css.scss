@@ -17,7 +17,12 @@ body {
     margin-top: 55px;
   }
 }
-
+@media (max-width: 767px) {
+  #HackerTweet h4 {
+    margin-top: -26px;
+    margin-left: 81px;
+  }
+}
 #MyImage {
   width: 73px;
   height: 73px;
