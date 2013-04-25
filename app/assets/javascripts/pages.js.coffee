@@ -15,6 +15,8 @@ jQuery ->
     createTweet = htmlTweet(tweet).hide()
     createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')
     tweetIndex++
+  channel.bind 'iphone', (data) ->
+    iphone.alert(data.message)
   pusher.connection.bind 'state_change', (states) ->
   # states = {previous: 'oldState', current: 'newState'}
     $('div#status').text "Pusher's current state is " + states.current
@@ -48,7 +50,10 @@ jQuery ->
     $('#new_message').val('')
     tweetIndex++
   $('#randomFakeTweet').on 'click', ->
-    generateRandomTweet()
+    if currentUser
+      generateRandomTweet(currentUser);
+    else
+      generateRandomTweet();
     tweet = streams.home[tweetIndex]
     createTweet = htmlTweet(tweet).hide()
     createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'fast')

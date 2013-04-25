@@ -3,6 +3,7 @@ var $tweetStream = $('#twitter, #twitterTweet'),
     tweetIndex = 0, // streams.home[tweetIndex];
     liveFakeTweetID = 0,
     visitor = 'visitor',
+    currentUser = false,
     pusher = new Pusher('4e695c8a13da46530407');
     channel = pusher.subscribe('tweet');
     liveMode = false;
@@ -63,7 +64,11 @@ var htmlTweet = function(tweet) {
 var liveFakeTweets = function(loopTime) {
   loopTime = loopTime || 10000,
   loopTime = ~~(Math.random() * loopTime);
-  generateRandomTweet();
+  if (currentUser) {
+    generateRandomTweet(currentUser);
+  } else {
+    generateRandomTweet();
+  }
   var tweet = streams.home[tweetIndex],
       createTweet = htmlTweet(tweet).hide();
   createTweet.prependTo($tweetStream).animate({height:"toggle", opacity:"toggle"},'slow');
