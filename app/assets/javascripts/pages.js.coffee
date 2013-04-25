@@ -24,7 +24,11 @@ jQuery ->
     tweetUser = $(this).val() || "visitor"
     unless tweetUser == Object.keys(users)
       createUserStream(tweetUser)
-  $('#new_message').on 'input', ->
+  $('#tweetUser').on 'keydown', (e) ->
+    if e.keyCode == 13
+      e.preventDefault()
+      $('#new_message').focus()
+  $('#new_message').on 'input', (e) ->
     message = $(this).val()
     console.log message
     key_value = 140 - +message.length
@@ -35,7 +39,6 @@ jQuery ->
       value = '>' + key_value + ''
       $('#postTweet').removeAttr('disabled')
     $('h6').html('<span ' + value + ' characters remaining</span>')
-    # console.log(value + ' characters remaining')
   $('#postTweet').on 'click', ->
     user = $('#tweetUser').val() || "visitor"
     message = $('#new_message').val() || randomMessage()
@@ -61,3 +64,4 @@ jQuery ->
       $(this).button('toggle').addClass('btn-info')
   $('#clearTweets').on 'click', clearTweets
   $('body').append '<div id="banner"><a href="http://hackreactor.com/" target="_blank">Built at HackReactor</a></div></a>'
+
